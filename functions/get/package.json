@@ -1,0 +1,11 @@
+{
+  "name": "get",
+  "version": "1.0.0",
+  "description": "This will extract information from a dynamo db and show it to users.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Estuardo",
+  "license": "ISC"
+}
