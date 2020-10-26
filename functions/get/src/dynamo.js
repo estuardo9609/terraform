@@ -1,10 +1,10 @@
 // Import required AWS SDK clients and commands for Node.js
-const { DynamoDBClient, GetItemCommand } = require("@aws-sdk/client-dynamodb");
+const AWS = require("aws-sdk");
 
-// Set the AWS Region
-const REGION = process.env.REGION;
+AWS.config.update({region: process.env.REGION});
+
 // Create DynamoDB service object
-const dbclient = new DynamoDBClient(REGION);
+const dbclient = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
 
 // Get single element from dynamo table
 async function getElement (key) {
@@ -12,9 +12,15 @@ async function getElement (key) {
     TableName: process.env.TABLE,
     Key: {}
   }
-  params.Key[`${process.env.KEY_NAME}`] = { N: key}
-  const data = await dbclient.send(new GetItemCommand(params))
-  return data.Item
+  params.Key[`${process.env.KEY_NAME}`] = key
+  dbclient.get(params, (err, data) => {
+    if (err) {
+      console.log(err)
+      return Promise.reject(err)
+    } else{
+      return Promise.resolve(data.Item)
+    }
+  })
 }
 
-modules.exports = { getElement }
+module.exports = { getElement }
