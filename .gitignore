@@ -30,4 +30,5 @@ override.tf.json
 
 functions/get/node_modules
 functions/post/node_modules
-functions/get.zip
+functions/get/get.zip
+functions/post/post.zip

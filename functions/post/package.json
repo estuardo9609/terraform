@@ -1,0 +1,14 @@
+{
+  "name": "POST",
+  "version": "1.0.0",
+  "description": "This will post info to dynamo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Estuardo",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.770.0"
+  }
+}
